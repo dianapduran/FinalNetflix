@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="welcome-section">
+        <h1>¡Bienvenido al Dashboard!</h1>
+        <p>Usuario ID: {{ user_id }}</p>
+        <p>Rol: {{ user_role }}</p>
+    </div>
+    
+    <div class="dashboard-actions">
+        <a href="/contenidos" class="btn btn-primary">Ver Contenidos</a>
+        <a href="/logout" class="btn btn-secondary">Cerrar Sesión</a>
+    </div>
+</div>
+{% endblock %}

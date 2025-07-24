@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Variables apuntando a RDS
+      - SERVER=mi-rds-endpoint.us-east-1.rds.amazonaws.com
+      - DATABASE=Profe
+      - USERNAME=cedesistemas
+      - PASSWORD=mi_password_rds
+      - DB_AUTH_MODE=sql
+      # Variables de aplicación
+      - SECRET_KEY=dev-secret-key
+      - DEBUG=true
+      - ENVIRONMENT=development
+    volumes:
+      - ./app:/app/app  # Hot reload
+      - ./logs:/app/logs

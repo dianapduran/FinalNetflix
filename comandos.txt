@@ -1,0 +1,16 @@
+# Ejecutar con recarga automática
+uvicorn main:app --reload
+
+# Ejecutar en puerto específico
+uvicorn app.main:app --port 8080
+
+# Ejecutar con host específico
+uvicorn app.main:app --host 0.0.0.0
+
+# Debugging
+
+# Ver logs detallados
+uvicorn app.main:app --log-level debug
+
+# Verificar sintaxis
+python -m py_compile app/main.py

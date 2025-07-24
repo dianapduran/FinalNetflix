@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or "StreamFlix" }}</title>
+    <link href="{{ url_for('static', path='/css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    {% block content %}{% endblock %}
+    <script src="{{ url_for('static', path='/js/main.js') }}"></script>
+</body>
+</html>

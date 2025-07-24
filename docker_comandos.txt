@@ -1,0 +1,47 @@
+# Construir la imagen
+docker build -t mi-fastapi-app .
+
+# Con tag específico
+docker build -t mi-fastapi-app.
+
+# Ver imágenes creadas
+docker images
+
+# Ver detalles de la imagen
+docker inspect mi-fastapi-app
+
+
+# Ejecutar contenedor básico
+docker run -p 8000:8000 mi-fastapi-app
+
+# Ejecutar en background (detached)
+docker run -d -p 8000:8000 --name fastapi-container mi-fastapi-app
+
+# Ejecutar interactiva del servidor uvicorn (RECOMENDADO para ver logs en tiempo real)
+sudo docker run -it -p 8080:8080 mi-fastapi-app uvicorn main:app --host 0.0.0.0 --port 8080
+
+#docker compose
+sudo docker compose -f docker-compose-dev.yml up
+
+# Ver contenedores ejecutándose
+docker ps
+
+# Ver logs del contenedor
+docker logs fastapi-container
+docker logs -f fastapi-container  # Seguir logs en tiempo real
+
+# Entrar al contenedor (debugging)
+docker exec -it fastapi-container bash
+sudo docker exec -it c60e92ed3492 /bin/bash
+
+# Detener contenedor
+docker stop fastapi-container
+
+# Eliminar contenedor
+docker rm fastapi-container
+
+# Eliminar imagen
+docker rmi mi-fastapi-app
+
+# Limpiar todo (cuidado!)
+docker system prune -a

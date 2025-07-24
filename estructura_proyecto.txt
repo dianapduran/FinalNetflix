@@ -1,0 +1,19 @@
+project/
+├── main.py
+├── config.py
+│
+│
+├── database/                # Base de datos
+│   └── connection.py        
+├── routers/                 # (endpoints) - Rutas relacionadas
+│   ├── contenidos.py        
+│   ├── usuarios.py
+│   └── visualizaciones.py
+├── schemas/                 # Pydantic models (BaseModel)
+│   ├── contenido.py         
+│   ├── usuario.py
+│   └── visualizacion.py
+├── services/                # Lógica de negocio
+│   └── contenidos_service.py 
+├── utils/                   # Funciones utilitarias
+│   └── helpers.py           
