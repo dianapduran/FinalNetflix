@@ -1,90 +1,103 @@
 {% extends "base.html" %}
-
 {% block content %}
-<!-- Header/Navbar -->
+
 <header class="header">
-    <nav class="navbar">
-        <div class="nav-brand">
-            <h1>StreamFlix</h1>
-        </div>
-        <div class="nav-links">
-            <a href="/docs" class="btn-secondary">API Docs</a>
-            <a href="/login" class="btn-primary">Iniciar Sesión</a>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <h1>StreamFlix</h1>
+    </div>
+    <div class="nav-links">
+      <a href="/docs" class="btn-secondary">API Docs</a>
+      <a href="/login" class="btn-primary">Iniciar Sesión</a>
+    </div>
+  </nav>
 </header>
 
-<!-- Hero Section -->
- 
 <section class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">Contenido ilimitado, entretenimiento sin fin</h1>
-        <p class="hero-subtitle">Descubre, crea y comparte contenido increíble en nuestra plataforma</p>
-        <div class="hero-buttons">
-            <a href="/register" class="btn-hero primary">Comenzar ahora</a>
-            <a href="#features" class="btn-hero secondary">Más información</a>
-        </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Contenido ilimitado, entretenimiento sin fin</h1>
+    <p class="hero-subtitle">Descubre, crea y comparte contenido increíble en nuestra plataforma</p>
+    <div class="hero-buttons">
+      <a href="/register" class="btn-hero primary">Comenzar ahora</a>
+      <a href="#features" class="btn-hero secondary">Más información</a>
     </div>
-    <div class="hero-gradient"></div>
+  </div>
+  <div class="hero-gradient"></div>
 </section>
 
-<!-- Features Section -->
 <section id="features" class="features">
-    <div class="container">
-        <h2 class="section-title">¿Por qué elegir StreamFlix?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🎬</div>
-                <h3>Contenido Diverso</h3>
-                <p>Explora una amplia variedad de contenido creado por usuarios de todo el mundo</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3>Comunidad Activa</h3>
-                <p>Conecta con creadores y usuarios que comparten tus mismos intereses</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Fácil de Usar</h3>
-                <p>Interfaz intuitiva diseñada para que puedas enfocarte en lo que realmente importa</p>
-            </div>
-        </div>
+  <div class="container">
+    <h2 class="section-title">¿Por qué elegir StreamFlix?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">Contenido</div>
+        <h3>Contenido Diverso</h3>
+        <p>Explora una amplia variedad de contenido creado por usuarios de todo el mundo</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">Comunidad</div>
+        <h3>Comunidad Activa</h3>
+        <p>Conecta con creadores y usuarios que comparten tus mismos intereses</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">Usabilidad</div>
+        <h3>Fácil de Usar</h3>
+        <p>Interfaz intuitiva diseñada para que puedas enfocarte en lo que realmente importa</p>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- CTA Section -->
 <section class="cta">
-    <div class="container">
-        <h2>¿Listo para comenzar?</h2>
-        <p>Únete a miles de usuarios que ya disfrutan de StreamFlix</p>
-        <a href="/register" class="btn-cta">Crear cuenta gratis</a>
-    </div>
+  <div class="container">
+    <h2>¿Listo para comenzar?</h2>
+    <p>Únete a miles de usuarios que ya disfrutan de StreamFlix</p>
+    <a href="/register" class="btn-cta">Crear cuenta gratis</a>
+  </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>StreamFlix</h3>
-                <p>Tu plataforma de contenido favorita</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Producto</h4>
-                    <a href="/api/docs">API</a>
-                    <a href="#features">Características</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Soporte</h4>
-                    <a href="#">Ayuda</a>
-                    <a href="#">Contacto</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 StreamFlix. Todos los derechos reservados.</p>
-        </div>
+<!-- Catálogo de contenidos -->
+<section id="catalogo" class="catalogo-section">
+  <div class="container">
+    <h2 class="section-title">Catálogo de contenidos</h2>
+    <div class="catalogo">
+      {% for item in contenidos %}
+      <div class="tarjeta">
+        <img src="{{ item.imagen_url }}" alt="{{ item.titulo }}">
+        <h3>{{ item.titulo }}</h3>
+        <p>{{ item.descripcion }}</p>
+        <p><strong>Fecha:</strong> {{ item.fecha_lanzamiento }}</p>
+        <p><strong>Tipo:</strong> {{ item.tipo_contenido.value if item.tipo_contenido else '' }}</p>
+      </div>
+      {% endfor %}
     </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>StreamFlix</h3>
+        <p>Tu plataforma de contenido favorita</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Producto</h4>
+          <a href="/api/docs">API</a>
+          <a href="#features">Características</a>
+        </div>
+        <div class="footer-column">
+          <h4>Soporte</h4>
+          <a href="#">Ayuda</a>
+          <a href="#">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 StreamFlix. Todos los derechos reservados.</p>
+    </div>
+  </div>
 </footer>
+
 {% endblock %}

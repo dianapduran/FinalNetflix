@@ -12,3 +12,7 @@ class ContenidoOut(BaseModel):
     descripcion: Optional[str]
     fecha_lanzamiento: Optional[str]
     tipo_contenido: TipoContenido
+    imagen_url: Optional[str]
+
+    class Config:
+        orm_mode = True

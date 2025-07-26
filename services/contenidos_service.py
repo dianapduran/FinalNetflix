@@ -5,7 +5,7 @@ def obtener_contenidos():
     conn = ConnectionFactory.create_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT id, titulo, descripcion, fecha_lanzamiento, tipo_contenido FROM contenidos"
+        "SELECT id, titulo, descripcion, fecha_lanzamiento, tipo_contenido, imagen_url FROM contenidos"
     )
     rows = cursor.fetchall()
     return [
@@ -15,6 +15,7 @@ def obtener_contenidos():
             descripcion=row[2],
             fecha_lanzamiento=str(row[3]) if row[3] else None,
             tipo_contenido=row[4],
+            imagen_url=row[5]
         )
         for row in rows
     ]

@@ -67,7 +67,7 @@ async def logout():
 async def login_form(request: Request):
     return templates.TemplateResponse("registrarse.html", {
         "request": request,
-        "title": "Iniciar Sesión"
+        "title": "Registro"
     })
     
 @router.post("/register")
